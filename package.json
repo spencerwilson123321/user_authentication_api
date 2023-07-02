@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/spencerwilson123321/user_authentication_api/issues"
   },
-  "homepage": "https://github.com/spencerwilson123321/user_authentication_api#readme"
+  "homepage": "https://github.com/spencerwilson123321/user_authentication_api#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.3.1",
+    "nodemon": "^2.0.22"
+  }
 }
