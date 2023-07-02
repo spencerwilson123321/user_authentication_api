@@ -1,6 +1,6 @@
 const User = require("../Models/UserModel")
 const { createSecretToken } = require("../Util/SecretToken")
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 module.exports.Signup = async (request, response, next) => {
