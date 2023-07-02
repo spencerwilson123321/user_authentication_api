@@ -1,6 +1,7 @@
 const User = require("../Models/UserModel")
 const { createSecretToken } = require("../Util/SecretToken")
 const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
 
 module.exports.Signup = async (request, response, next) => {
     try {
@@ -46,4 +47,23 @@ module.exports.Login = async (request, response, next) => {
     } catch (error) {
         console.log(error)
     }
+}
+
+module.exports.Verify = (request, response) => {
+    const token = request.cookies.token
+    if (!token) {
+        return response.json({ status: false })
+    }
+    jwt.verify(token, process.env.TOKEN_KEY, async (error, data) => {
+        if (error) {
+            return response.json({ status: false })
+        } else {
+            const user = await User.findById(data.id)
+            if (user) {
+                return response.json({ status: true, username: user.username })
+            } else {
+                return response.json({ status: false })
+            }
+        }
+    })
 }
