@@ -60,9 +60,9 @@ module.exports.Verify = (request, response) => {
         } else {
             const user = await User.findById(data.id)
             if (user) {
-                return response.json({ status: true, username: user.username })
+                return response.status(200).json({ status: true, username: user.username })
             } else {
-                return response.json({ status: false })
+                return response.status(200).json({ status: false })
             }
         }
     })
